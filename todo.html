@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 {
+      padding-top: 40px;
+    }
+  </style>
+</head>
+<body><div class="min-h-screen p-20 bg-gray-200">
+<div id="app" class="container  mx-auto px-4 py-2">
+  <nav class="w-full mt-10 px-4 flex justify-between">
+    <img src="https://www.flaticon.com/svg/vstatic/svg/2285/2285516.svg?token=exp=1620481780~hmac=8d094686ce9b7215e2ead34a8e78e8fc"
+
+         alt="todo" class="w-12">
+    <img src="https://as2.ftcdn.net/jpg/00/95/86/29/500_F_95862943_utF2wDj9jX8vbxMyyiEjh1y8uTAZYp3I.jpg" alt="cross" class="w-12">
+  </nav>
+  <h1 class="text-size-60px  text-center mt-10 "><b>Todo List</b></h1>
+
+  <div v-if="!isEditing">
+    <input type="text" v-model="todo">
+    <input type="submit" value="Add" @click="storeTodo">
+  </div>
+  <div v-else>
+    <input type="text" v-model="todo">
+    <input type="submit" value="Update" @click="updateTodo">
+  </div>
+
+  <ol>
+    <li v-for="(todo, index) in todos">
+      {{ todo }}
+      <button @click="editTodo(index, todo)">Edit</button>
+      <button @click="removeTodo(index)">Delete</button>
+    </li>
+  </ol>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="todolist.js">
+</script>
+</body>
+</html>
